@@ -214,6 +214,184 @@ th:nth-child(2), td:nth-child(2) {
   box-shadow: inset 0 -3px var(--pokemon-yellow);
 }
 
+/* Einführung und Veranstaltungsinfos auf der Ligaseite. */
+.pokemon-page .league-intro {
+  margin-bottom: 2.5rem;
+}
+
+.pokemon-page .league-intro-text {
+  max-width: 75ch;
+}
+
+.pokemon-page .league-intro-text p {
+  margin-bottom: 1rem;
+}
+
+.pokemon-page .league-event-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem 2rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--pokemon-yellow);
+  border-radius: 0.75rem;
+  background: var(--surface);
+}
+
+.pokemon-page .league-event-info p {
+  margin: 0;
+}
+
+.pokemon-page .league-event-link {
+  display: inline-block;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.4rem;
+  background: var(--pokemon-blue);
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
+
+.pokemon-page .league-event-link:hover {
+  background: #2465a2;
+}
+
+/* Ergebnisblöcke passen sich ohne feste Breite auch kleinen Bildschirmen an. */
+.pokemon-page .tournament-results {
+  margin-top: 2.5rem;
+}
+
+.pokemon-page .tournament-results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.pokemon-page .tournament-result {
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--pokemon-yellow);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  overflow-wrap: anywhere;
+}
+
+.pokemon-page .tournament-result h3 {
+  margin: 0 0 1rem;
+  color: var(--pokemon-blue);
+}
+
+.pokemon-page .tournament-result ul {
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.pokemon-page .tournament-result li {
+  margin-bottom: 0.4rem;
+}
+
+.pokemon-page .tournament-result p {
+  margin: 0;
+}
+
+.pokemon-page .participants-toggle,
+.pokemon-page .tournaments-toggle {
+  font: inherit;
+  cursor: pointer;
+  max-width: 100%;
+}
+
+.pokemon-page .participants-toggle {
+  padding: 0.5rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--pokemon-blue);
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+.pokemon-page .tournaments-toggle {
+  margin-top: 1.25rem;
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-radius: 0.4rem;
+  background: var(--pokemon-blue);
+  color: white;
+}
+
+.pokemon-page .tournaments-toggle:hover {
+  background: #2465a2;
+}
+
+.pokemon-page .participants-toggle:focus-visible,
+.pokemon-page .tournaments-toggle:focus-visible {
+  outline: 3px solid #b76a00;
+  outline-offset: 3px;
+}
+
+/* Öffentliche Regelerklärung; ohne Einfluss auf die Ligaberechnung. */
+.pokemon-page .league-rules {
+  margin-top: 2.5rem;
+}
+
+.pokemon-page .league-rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.pokemon-page .league-rule {
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  overflow-wrap: anywhere;
+}
+
+.pokemon-page .league-rule h3 {
+  margin: 0 0 1rem;
+  color: var(--pokemon-blue);
+}
+
+.pokemon-page .league-rule p:last-child {
+  margin-bottom: 0;
+}
+
+.pokemon-page .league-rule ol {
+  padding-left: 1.5rem;
+}
+
+.pokemon-page .league-rule li {
+  margin-bottom: 0.5rem;
+}
+
+.pokemon-page .league-points {
+  margin: 0 0 1rem;
+  border-top: 3px solid var(--pokemon-yellow);
+}
+
+.pokemon-page .league-points div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.pokemon-page .league-points dd {
+  margin: 0;
+  font-weight: 700;
+  color: var(--pokemon-blue);
+}
+
 /* Formularregeln sind auf die Verwaltungsseite begrenzt. */
 .admin-page .admin-panel {
   margin-bottom: 2rem;

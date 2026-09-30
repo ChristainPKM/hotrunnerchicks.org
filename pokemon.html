@@ -14,8 +14,22 @@
     <a class="back-link" href="index.html">Zur Startseite</a>
     <header class="page-header">
       <p class="eyebrow">Meine Projekte</p>
-      <h1>Pokémon Liga</h1>
+      <h1>Pokémon Liga Coburg</h1>
     </header>
+
+    <section class="league-intro" aria-labelledby="liga-willkommen">
+      <div class="league-intro-text">
+        <h2 id="liga-willkommen">Willkommen bei der Pokémon Liga Coburg!</h2>
+        <p>Unsere Liga ist ein freiwilliges Zusatzangebot zu unseren regelmäßigen Pokémon-Turnieren. Ihr könnt an den wöchentlichen Turnieren teilnehmen, ohne Mitglied der Liga zu&nbsp;sein.</p>
+        <p>Die Teilnahme an der Liga ist kostenlos und freiwillig und kann jederzeit wieder beendet werden. Wer teilnimmt, sammelt bei den für die Liga gewerteten Turnieren Punkte und kann sich über die Saison hinweg mit den anderen Ligaspielern messen.</p>
+        <p>Ligaturniere finden immer Dienstag statt. Die aktuellen Termine und die Anmeldung zu den einzelnen Turnieren findet ihr beim spieleabend.shop.</p>
+      </div>
+      <div class="league-event-info">
+        <p><strong>Pokémon Liga</strong><br>Dienstag ab 17:00 Uhr</p>
+        <p><strong>spieleabend.shop</strong><br>Kirchgasse 5<br>96450 Coburg</p>
+        <a class="league-event-link" href="https://spieleabend.shop/pages/events" target="_blank" rel="noopener noreferrer">Aktuelle Turniere &amp; Anmeldung</a>
+      </div>
+    </section>
 
     <!-- Saisonname und Turnierzahl kommen aus der zentralen JavaScript-Konfiguration. -->
     <h2 id="saison-name"></h2>
@@ -24,7 +38,7 @@
     <!-- Auf kleinen Bildschirmen lässt sich nur die Tabelle seitlich scrollen. -->
     <div class="table-wrapper" role="region" aria-label="Ligatabelle" tabindex="0">
       <table>
-        <caption>Ligatabelle</caption>
+        <caption>Platzierungen</caption>
         <thead>
           <tr>
             <th scope="col">Platz</th>
@@ -40,11 +54,71 @@
         <tbody>
           <!-- Hier können später Spieler als weitere Tabellenzeilen stehen. -->
           <tr>
-            <td class="empty-state" colspan="8">Noch keine Spieler eingetragen.</td>
+            <td class="empty-state" colspan="8">Noch keine Teilnehmer für diese Saison eingetragen.</td>
           </tr>
         </tbody>
       </table>
     </div>
+    <section class="tournament-results" aria-labelledby="turnierergebnisse-titel">
+      <h2 id="turnierergebnisse-titel">Turnierergebnisse</h2>
+      <p>Hier findet ihr die Ergebnisse der bereits gewerteten Ligaturniere. So könnt ihr nachvollziehen, welche Teilnahmen und Platzierungen für die Ligawertung berücksichtigt wurden.</p>
+      <!-- Die Ergebnisblöcke werden aus liga-daten.js erzeugt. -->
+      <div id="turnierergebnisse" class="tournament-results-grid"></div>
+    </section>
+    <section class="league-rules" aria-labelledby="ligaregeln-titel">
+      <h2 id="ligaregeln-titel">Ligaregeln &amp; Wertung</h2>
+      <div class="league-rules-grid">
+        <section class="league-rule" aria-labelledby="regel-teilnahme">
+          <h3 id="regel-teilnahme">1. Teilnahme</h3>
+          <p>Die Teilnahme an der Pokémon Liga Coburg ist freiwillig und kostenlos.</p>
+          <p>Eine Teilnahme an der Liga ist keine Voraussetzung, um an den wöchentlichen Pokémon-Turnieren teilzunehmen.</p>
+          <p>Die An- und Abmeldung zur Liga ist jederzeit möglich.</p>
+          <p>Bei einer Abmeldung wird der Teilnehmer aus der Ligatabelle entfernt. Auf Wunsch werden auch die zu seiner Person gespeicherten Ligadaten gelöscht.</p>
+          <p>Wird die Teilnahme an der Liga beendet und meldet sich ein Teilnehmer zu einem späteren Zeitpunkt erneut an, beginnt die Ligawertung für diesen Teilnehmer mit der erneuten Anmeldung neu. Turniere, die vor der erneuten Anmeldung gespielt wurden, werden für die aktuelle Ligawertung nicht berücksichtigt.</p>
+        </section>
+
+        <section class="league-rule" aria-labelledby="regel-turniere">
+          <h3 id="regel-turniere">2. Gewertete Turniere</h3>
+          <p>Für die Liga zählen ausschließlich die als Ligaturniere gewerteten Turniere am Dienstag.</p>
+          <p>Für jedes gewertete Turnier erhält ein angemeldeter Ligateilnehmer mindestens einen Punkt für seine Teilnahme.</p>
+          <p>Die Liga wird über eine Saison gespielt.</p>
+        </section>
+
+        <section class="league-rule" aria-labelledby="regel-punkte">
+          <h3 id="regel-punkte">3. Punktevergabe</h3>
+          <p><strong>Teilnahme: 1 Punkt</strong></p>
+          <p>Zusätzlich für die Platzierung:</p>
+          <dl class="league-points">
+            <div><dt>1. Platz</dt><dd>+5 Punkte</dd></div>
+            <div><dt>2. Platz</dt><dd>+3 Punkte</dd></div>
+            <div><dt>3. Platz</dt><dd>+2 Punkte</dd></div>
+            <div><dt>4. Platz</dt><dd>+1 Punkt</dd></div>
+          </dl>
+          <p>Die Platzierungspunkte werden zusätzlich zum Teilnahmepunkt vergeben. Ein Turniersieger erhält damit beispielsweise insgesamt 6 Punkte für das Turnier.</p>
+        </section>
+
+        <section class="league-rule" aria-labelledby="regel-saison">
+          <h3 id="regel-saison">4. Saison</h3>
+          <p>Für eine vollständige Saison sind mindestens 12 gewertete Turniere vorgesehen.</p>
+          <p>Die tatsächliche Anzahl der Turniere kann je nach Verlauf der Saison abweichen. Die Saison kann bei Bedarf früher beendet oder um weitere Turniere verlängert werden.</p>
+          <p>Die jeweils auf der Seite angezeigte Saison und die Anzahl der bereits gespielten Ligaturniere sind maßgeblich für den aktuellen Stand.</p>
+        </section>
+
+        <section class="league-rule" aria-labelledby="regel-gleichstand">
+          <h3 id="regel-gleichstand">5. Gleichstand</h3>
+          <p>Haben zwei oder mehr Teilnehmer die gleiche Gesamtpunktzahl, wird die Reihenfolge anhand folgender Kriterien bestimmt:</p>
+          <ol>
+            <li>höhere Anzahl an Turnierteilnahmen</li>
+            <li>höhere Anzahl an 1. Plätzen</li>
+            <li>höhere Anzahl an 2. Plätzen</li>
+            <li>höhere Anzahl an 3. Plätzen</li>
+            <li>höhere Anzahl an 4. Plätzen</li>
+          </ol>
+          <p>Die Kriterien werden nacheinander angewendet. Erst wenn ein Kriterium keine Entscheidung ergibt, wird das nächste verwendet.</p>
+          <p>Besteht danach weiterhin Gleichstand, erhalten die Spieler denselben Tabellenplatz. Die entsprechenden Folgeplätze werden übersprungen, beispielsweise 1, 2, 2, 4. Innerhalb eines gemeinsamen Platzes werden die Namen alphabetisch angezeigt; dies hat keinen Einfluss auf die Platzierung.</p>
+        </section>
+      </div>
+    </section>
   </main>
   <footer class="site-footer">
     <nav aria-label="Rechtliche Informationen">
