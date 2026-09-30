@@ -308,8 +308,49 @@ th:nth-child(2), td:nth-child(2) {
   outline-offset: 3px;
 }
 
+/* Rechtstexte und Footer verwenden die vorhandenen Seitenfarben. */
+.legal-content {
+  max-width: 75ch;
+  overflow-wrap: anywhere;
+}
+
+.legal-page h1 {
+  overflow-wrap: anywhere;
+}
+
+.legal-content h2:not(:first-child) {
+  margin-top: 2rem;
+}
+
+.legal-content a {
+  color: var(--accent);
+  text-underline-offset: 0.25rem;
+}
+
+.site-footer {
+  width: min(1100px, 100% - 3rem);
+  margin: 0 auto;
+  padding: 1.25rem 0 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.site-footer a {
+  color: inherit;
+  text-underline-offset: 0.25rem;
+}
+
+.site-footer span {
+  margin: 0 0.5rem;
+}
+
 /* Unter 700 Pixeln stehen die Kacheln untereinander. */
 @media (max-width: 700px) {
+  .site-footer {
+    width: calc(100% - 2rem);
+  }
+
   .container {
     width: calc(100% - 2rem);
     padding: 2rem 0;
