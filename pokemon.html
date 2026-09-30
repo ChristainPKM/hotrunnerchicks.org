@@ -35,14 +35,16 @@
     <h2 id="saison-name"></h2>
     <p id="saison-fortschritt"></p>
 
+    <h2>Platzierungen</h2>
     <!-- Auf kleinen Bildschirmen lässt sich nur die Tabelle seitlich scrollen. -->
-    <div class="table-wrapper" role="region" aria-label="Ligatabelle" tabindex="0">
+    <div class="table-wrapper" role="region" aria-label="Junior &amp; Senior" tabindex="0">
       <table>
-        <caption>Platzierungen</caption>
+        <caption>Junior &amp; Senior</caption>
         <thead>
           <tr>
             <th scope="col">Platz</th>
             <th scope="col">Spieler</th>
+            <th scope="col">Kategorie</th>
             <th scope="col">Teilnahmen</th>
             <th scope="col">1. Platz</th>
             <th scope="col">2. Platz</th>
@@ -51,10 +53,36 @@
             <th scope="col">Punkte</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="liga-junior-senior">
           <!-- Hier können später Spieler als weitere Tabellenzeilen stehen. -->
           <tr>
-            <td class="empty-state" colspan="8">Noch keine Teilnehmer für diese Saison eingetragen.</td>
+            <td class="empty-state" colspan="9">Noch keine Teilnehmer für diese Saison eingetragen.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <!-- Auf kleinen Bildschirmen lässt sich nur die Tabelle seitlich scrollen. -->
+    <div class="table-wrapper" role="region" aria-label="Master" tabindex="0">
+      <table>
+        <caption>Master</caption>
+        <thead>
+          <tr>
+            <th scope="col">Platz</th>
+            <th scope="col">Spieler</th>
+            <th scope="col">Kategorie</th>
+            <th scope="col">Teilnahmen</th>
+            <th scope="col">1. Platz</th>
+            <th scope="col">2. Platz</th>
+            <th scope="col">3. Platz</th>
+            <th scope="col">4. Platz</th>
+            <th scope="col">Punkte</th>
+          </tr>
+        </thead>
+        <tbody id="liga-master">
+          <!-- Hier können später Spieler als weitere Tabellenzeilen stehen. -->
+          <tr>
+            <td class="empty-state" colspan="9">Noch keine Teilnehmer für diese Saison eingetragen.</td>
           </tr>
         </tbody>
       </table>

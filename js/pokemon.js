@@ -5,6 +5,14 @@
 const teilnahmePunkte = 1;
 const platzierungsPunkte = [5, 3, 2, 1];
 
+// Alte Turniere werden nur zum Lesen in dieselbe Form wie neue Wertungen gebracht.
+function turnierWertungen(turnier) {
+  if (Array.isArray(turnier.wertungen)) return turnier.wertungen;
+  return [{ bezeichnung: "", ergebnisse: [
+    ...turnier.platzierungen.map((spielerId, index) => ({ spielerId, platz: index + 1 })),
+    ...turnier.weitereTeilnehmer.map(spielerId => ({ spielerId, platz: null }))
+  ] }];
+}
 function berechneLigatabelle(ligaabende) {
   // Die ID ist der Schlüssel; der Anzeigename kommt aus der zentralen Liste.
   const spielerNachId = new Map(spielerListe.map(spieler => [spieler.id, spieler]));
@@ -12,7 +20,8 @@ function berechneLigatabelle(ligaabende) {
 
   for (const abend of ligaabende) {
     // Ein Set enthält jede ID nur einmal, auch bei mehrfacher Nennung.
-    const teilnehmer = new Set([...abend.platzierungen, ...abend.weitereTeilnehmer]);
+    const ergebnisse = turnierWertungen(abend).flatMap(wertung => wertung.ergebnisse);
+    const teilnehmer = new Set(ergebnisse.map(ergebnis => ergebnis.spielerId));
 
     for (const id of teilnehmer) {
       if (!spielerNachId.has(id)) {
@@ -24,6 +33,7 @@ function berechneLigatabelle(ligaabende) {
         spieler.set(id, {
           id: id,
           name: spielerNachId.get(id).name,
+          kategorie: spielerNachId.get(id).kategorie,
           teilnahmen: 0,
           plaetze: [0, 0, 0, 0],
           punkte: 0
@@ -37,7 +47,7 @@ function berechneLigatabelle(ligaabende) {
 
     // Array-Indizes beginnen bei 0: Index 0 entspricht dem ersten Platz.
     const gewertetePlatzierungen = new Set();
-    abend.platzierungen.forEach((id, index) => {
+    ergebnisse.forEach(({ spielerId: id, platz }) => {
       // Ungültige IDs überspringen, ohne die Plätze der anderen zu verschieben.
       if (!spielerNachId.has(id)) {
         return;
@@ -49,8 +59,10 @@ function berechneLigatabelle(ligaabende) {
       gewertetePlatzierungen.add(id);
 
       const eintrag = spieler.get(id);
-      eintrag.plaetze[index] += 1;
-      eintrag.punkte += platzierungsPunkte[index];
+      if (Number.isInteger(platz) && platz >= 1 && platz <= 4) {
+        eintrag.plaetze[platz - 1] += 1;
+        eintrag.punkte += platzierungsPunkte[platz - 1];
+      }
     });
   }
 
@@ -72,14 +84,27 @@ function vergleicheSpieler(a, b) {
 }
 
 function zeigeLigatabelle(ligatabelle) {
-  const tabellenInhalt = document.querySelector(".pokemon-page tbody");
+  // Die Punkte bleiben gleich; jede Altersgruppe erhält ihre eigene Rangfolge.
+  zeigeRangliste(ligatabelle.filter(s => s.kategorie === "Junior" || s.kategorie === "Senior"), "#liga-junior-senior");
+  zeigeRangliste(ligatabelle.filter(s => s.kategorie === "Master"), "#liga-master");
+}
 
-  // Der vorhandene Hinweis bleibt sichtbar, wenn es keine Spieler gibt.
+function zeigeRangliste(ligatabelle, ziel) {
+  const tabellenInhalt = document.querySelector(ziel);
+  tabellenInhalt.replaceChildren();
+
+  // Jede Rangliste zeigt unabhängig ihren leeren Zustand.
   if (ligatabelle.length === 0) {
+    const zeile = document.createElement("tr");
+    const zelle = document.createElement("td");
+    zelle.colSpan = 9;
+    zelle.className = "empty-state";
+    zelle.textContent = "Noch keine Teilnehmer für diese Saison eingetragen.";
+    zeile.appendChild(zelle);
+    tabellenInhalt.appendChild(zeile);
     return;
   }
 
-  tabellenInhalt.replaceChildren();
   let platz = 1;
 
   ligatabelle.forEach((spieler, index) => {
@@ -91,6 +116,7 @@ function zeigeLigatabelle(ligatabelle) {
     const werte = [
       platz,
       spieler.name,
+      spieler.kategorie,
       spieler.teilnahmen,
       ...spieler.plaetze,
       spieler.punkte
@@ -151,40 +177,43 @@ function zeigeTurnierergebnisse(ligaabende) {
 
     // Wie in der Ligawertung: unbekannte IDs und doppelte Nennungen überspringen.
     const angezeigt = new Set();
-    const platzListe = document.createElement("ul");
-    abend.platzierungen.forEach((id, index) => {
-      if (!namenNachId.has(id) || angezeigt.has(id)) return;
-      angezeigt.add(id);
-      const eintrag = document.createElement("li");
-      eintrag.textContent = `${index + 1}. Platz – ${namenNachId.get(id)}`;
-      platzListe.appendChild(eintrag);
-    });
-    block.appendChild(platzListe);
-
-    const weitereNamen = [];
-    for (const id of abend.weitereTeilnehmer) {
-      if (!namenNachId.has(id) || angezeigt.has(id)) continue;
-      angezeigt.add(id);
-      weitereNamen.push(namenNachId.get(id));
-    }
-    if (weitereNamen.length > 0) {
-      const weitere = document.createElement("p");
-      weitere.id = `turnier-teilnehmer-${turnierIndex}`;
-      weitere.textContent = `Weitere Teilnehmer: ${weitereNamen.join(", ")}`;
-      weitere.hidden = true;
-      const schalter = document.createElement("button");
-      schalter.type = "button";
-      schalter.className = "participants-toggle";
-      schalter.textContent = "Weitere Teilnehmer anzeigen";
-      schalter.setAttribute("aria-expanded", "false");
-      schalter.setAttribute("aria-controls", weitere.id);
-      // hidden steuert die Sichtbarkeit, aria-expanded teilt den Zustand mit.
-      schalter.addEventListener("click", () => {
-        weitere.hidden = !weitere.hidden;
-        schalter.textContent = weitere.hidden ? "Weitere Teilnehmer anzeigen" : "Weitere Teilnehmer ausblenden";
-        schalter.setAttribute("aria-expanded", String(!weitere.hidden));
-      });
-      block.append(schalter, weitere);
+    for (const [wertungsIndex, wertung] of turnierWertungen(abend).entries()) {
+      const abschnitt = document.createElement("section");
+      if (wertung.bezeichnung) {
+        const titel = document.createElement("h4");
+        titel.textContent = wertung.bezeichnung;
+        abschnitt.appendChild(titel);
+      }
+      const liste = document.createElement("ul");
+      const weitereNamen = [];
+      for (const { spielerId, platz } of wertung.ergebnisse) {
+        if (!namenNachId.has(spielerId) || angezeigt.has(spielerId)) continue;
+        angezeigt.add(spielerId);
+        if (platz !== null && platz <= 4) {
+          const li = document.createElement("li");
+          li.textContent = `${platz}. Platz – ${namenNachId.get(spielerId)}`;
+          liste.appendChild(li);
+        } else weitereNamen.push(namenNachId.get(spielerId));
+      }
+      abschnitt.appendChild(liste);
+      if (weitereNamen.length) {
+        const weitere = document.createElement("p");
+        weitere.id = `turnier-teilnehmer-${turnierIndex}-${wertungsIndex}`;
+        weitere.textContent = `Weitere Teilnehmer: ${weitereNamen.join(", ")}`;
+        weitere.hidden = true;
+        const schalter = document.createElement("button");
+        schalter.type = "button"; schalter.className = "participants-toggle";
+        schalter.textContent = "Weitere Teilnehmer anzeigen";
+        schalter.setAttribute("aria-expanded", "false");
+        schalter.setAttribute("aria-controls", weitere.id);
+        schalter.addEventListener("click", () => {
+          weitere.hidden = !weitere.hidden;
+          schalter.textContent = weitere.hidden ? "Weitere Teilnehmer anzeigen" : "Weitere Teilnehmer ausblenden";
+          schalter.setAttribute("aria-expanded", String(!weitere.hidden));
+        });
+        abschnitt.append(schalter, weitere);
+      }
+      block.appendChild(abschnitt);
     }
     bereich.appendChild(block);
   }
@@ -204,9 +233,8 @@ function zeigeTurnierergebnisse(ligaabende) {
         block.hidden = !aufklappen;
         // Ältere Karten beginnen beim erneuten Öffnen wieder kompakt.
         if (!aufklappen) {
-          const teilnehmerSchalter = block.querySelector(".participants-toggle");
-          if (teilnehmerSchalter) {
-            block.querySelector("p").hidden = true;
+          for (const teilnehmerSchalter of block.querySelectorAll(".participants-toggle")) {
+            document.getElementById(teilnehmerSchalter.getAttribute("aria-controls")).hidden = true;
             teilnehmerSchalter.textContent = "Weitere Teilnehmer anzeigen";
             teilnehmerSchalter.setAttribute("aria-expanded", "false");
           }
@@ -221,3 +249,4 @@ function zeigeTurnierergebnisse(ligaabende) {
 
 // Alle eingetragenen Veranstaltungen gelten bereits als gewertete Ligaturniere.
 zeigeTurnierergebnisse(veranstaltungen);
+

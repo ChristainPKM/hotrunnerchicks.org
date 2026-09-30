@@ -458,6 +458,18 @@ th:nth-child(2), td:nth-child(2) {
   color: #a12222;
 }
 
+.admin-page .tdf-warning {
+  background: #fff4d1;
+  color: #704d00;
+}
+
+.admin-page .tdf-player-form {
+  margin-top: 1rem;
+  min-width: 240px;
+  max-width: 32rem;
+  white-space: normal;
+}
+
 .admin-page textarea {
   font-family: Consolas, monospace;
   font-weight: 400;
