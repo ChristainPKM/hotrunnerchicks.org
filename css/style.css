@@ -498,6 +498,45 @@ th:nth-child(2), td:nth-child(2) {
   outline-offset: 3px;
 }
 
+/* Gleiche Logoflächen zeigen beide Partner vollständig und unverzerrt. */
+.pokemon-page .league-partners {
+  margin-top: 2rem;
+}
+
+.pokemon-page .league-partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1rem;
+}
+
+.pokemon-page .league-partner-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 1.5rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+}
+
+.pokemon-page .league-partner-card img {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.pokemon-page .league-partner-card:hover {
+  border-color: var(--pokemon-blue);
+}
+
+.pokemon-page .league-partner-card:focus-visible {
+  outline: 3px solid var(--pokemon-blue);
+  outline-offset: 3px;
+}
+
 /* Rechtstexte und Footer verwenden die vorhandenen Seitenfarben. */
 .legal-content {
   max-width: 75ch;
