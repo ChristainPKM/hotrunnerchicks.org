@@ -537,6 +537,34 @@ th:nth-child(2), td:nth-child(2) {
   outline-offset: 3px;
 }
 
+/* Die lokale Infoseite nutzt die vorhandenen Liga-Farben und Schaltflächen. */
+.local-shop-page .local-shop-logo {
+  display: block;
+  width: min(100%, 300px);
+  height: 120px;
+  object-fit: contain;
+  object-position: left center;
+  margin-bottom: 1.5rem;
+}
+
+.local-shop-page .league-event-info h2 {
+  flex-basis: 100%;
+  margin: 0;
+}
+
+.local-shop-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.local-shop-notice {
+  max-width: 75ch;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
 /* Rechtstexte und Footer verwenden die vorhandenen Seitenfarben. */
 .legal-content {
   max-width: 75ch;
