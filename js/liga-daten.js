@@ -243,4 +243,78 @@ const spielerListe = [
   }
 ];
 
-const veranstaltungen = [];
+const veranstaltungen = [
+  {
+    "tdfTurnierId": "26-10-023182",
+    "name": "Pokémon-Liga",
+    "datum": "06.10.2026",
+    "wertungen": [
+      {
+        "bezeichnung": "Wertung 2",
+        "ergebnisse": [
+          {
+            "spielerId": "P012",
+            "platz": 1
+          },
+          {
+            "spielerId": "P041",
+            "platz": 2
+          },
+          {
+            "spielerId": "P037",
+            "platz": 3
+          },
+          {
+            "spielerId": "P007",
+            "platz": 4
+          },
+          {
+            "spielerId": "P042",
+            "platz": 5
+          },
+          {
+            "spielerId": "P040",
+            "platz": 6
+          },
+          {
+            "spielerId": "P030",
+            "platz": 7
+          },
+          {
+            "spielerId": "P002",
+            "platz": 8
+          },
+          {
+            "spielerId": "P015",
+            "platz": 9
+          },
+          {
+            "spielerId": "P046",
+            "platz": 10
+          },
+          {
+            "spielerId": "P009",
+            "platz": 11
+          },
+          {
+            "spielerId": "P004",
+            "platz": 12
+          }
+        ]
+      },
+      {
+        "bezeichnung": "Wertung 1",
+        "ergebnisse": [
+          {
+            "spielerId": "P024",
+            "platz": 1
+          },
+          {
+            "spielerId": "P035",
+            "platz": 2
+          }
+        ]
+      }
+    ]
+  }
+];
