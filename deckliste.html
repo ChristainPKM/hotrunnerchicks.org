@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deckliste einreichen | Pokémon Liga Coburg</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/deckliste-konfiguration.js" defer></script>
+  <script src="js/deckliste.js" defer></script>
+</head>
+<body class="pokemon-page decklist-page">
+  <main class="container">
+    <a class="back-link" href="pokemon.html">Zurück zur Pokémon-Liga</a>
+    <header class="page-header"><h1>Deckliste einreichen</h1></header>
+    <section class="league-rule" aria-labelledby="deck-turnier">
+      <h2 id="deck-turnier">Aktuelles Turnier</h2>
+      <p id="deck-termin"></p>
+      <p id="deck-status" role="status"></p>
+      <noscript>Bitte JavaScript aktivieren, um den Abgabestatus und das Formular anzuzeigen.</noscript>
+      <form id="deck-form" hidden autocomplete="off">
+        <label for="deck-name">Vor- und Nachname</label>
+        <input id="deck-name" type="text" required maxlength="150" autocomplete="off">
+        <label for="deck-kategorie">Altersklasse</label>
+        <select id="deck-kategorie" required>
+          <option value="">Bitte auswählen</option><option>Junior</option><option>Senior</option><option>Master</option>
+        </select>
+        <aside class="deck-format-info" aria-labelledby="deck-format-titel">
+          <p id="deck-format-titel"><strong><span aria-hidden="true">ⓘ</span> Wichtig: Format der Deckliste</strong></p>
+          <p>Bitte füge deine Deckliste im Original-Exportformat aus Pokémon-Sammelkartenspiel-Live (Pokémon TCG Live) ein.</p>
+          <p>Die Deckliste muss direkt aus dem Spiel kopiert und unverändert eingefügt werden. Manuell erstellte oder anders formatierte Listen können von unserer Webseite möglicherweise nicht erkannt werden.</p>
+          <p>Nur wenn alle 60 Karten korrekt erkannt werden, kann die Deckliste zur Abgabe vorbereitet werden.</p>
+        </aside>
+        <label for="deck-text">Deckliste aus Pokémon TCG Live</label>
+        <textarea id="deck-text" rows="16" required spellcheck="false" aria-describedby="deck-hilfe deck-anzahl deck-fehler"></textarea>
+        <p id="deck-hilfe">Füge die vollständige exportierte Liste ein. Erkannt werden Kartenzeilen mit Menge, Kartenname, Set-Kürzel und Kartennummer sowie deutsche und englische Abschnittsüberschriften. Diese Prüfung zählt Karten und prüft das Textformat; sie ersetzt keine vollständige Decklegalitätsprüfung.</p>
+        <p id="deck-anzahl" role="status">0 von 60 Karten</p>
+        <ul id="deck-fehler" class="deck-errors"></ul>
+        <div class="local-shop-actions">
+          <button class="league-event-link" type="submit">E-Mail vorbereiten</button>
+          <button class="league-event-link" id="deck-kopieren" type="button">Vollständige Nachricht kopieren</button>
+        </div>
+        <p id="deck-aktion" role="status"></p>
+        <div id="deck-nachricht-bereich" hidden>
+          <label for="deck-nachricht">Vollständige Nachricht zum Kontrollieren und manuellen Kopieren</label>
+          <textarea id="deck-nachricht" rows="12" readonly></textarea>
+        </div>
+      </form>
+    </section>
+    <div class="league-intro-text">
+      <p>Du musst die vorbereitete E-Mail selbst an <strong>pkmligacoburg@email.de</strong> versenden. Die Website versendet nichts und kann keinen erfolgreichen Eingang bestätigen. Prüfe vor dem Senden, ob dein E-Mail-Programm die vollständige Deckliste übernommen hat. Bei Problemen mit dem E-Mail-Link kannst du die Nachricht kopieren.</p>
+      <p>Maßgeblich für die Frist ist der E-Mail-Eingang, nicht das Öffnen der Nachricht. Die Schließung im Browser richtet sich nach deiner Geräteuhr und ist keine serverseitige Zugangssperre. Alle Zeitangaben gelten für Europe/Berlin, einschließlich Sommer- und Winterzeit.</p>
+      <p>Deine Eingaben werden nur auf dieser Seite im Browser verarbeitet und von der Website weder hochgeladen noch gespeichert oder veröffentlicht. Beim Kopieren gelangen sie in deine Zwischenablage; beim Öffnen der E-Mail in dein E-Mail-Programm. Weitere Hinweise findest du in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+    </div>
+  </main>
+  <footer class="site-footer"><nav aria-label="Rechtliche Informationen">
+    <a href="impressum.html">Impressum</a> <span aria-hidden="true">|</span> <a href="datenschutz.html">Datenschutz</a>
+  </nav></footer>
+</body>
+</html>

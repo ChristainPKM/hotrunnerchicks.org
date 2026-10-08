@@ -565,6 +565,66 @@ th:nth-child(2), td:nth-child(2) {
   font-size: 0.875rem;
 }
 
+/* Nur das öffentliche Decklistenformular; keine Speicherung der Eingaben. */
+.decklist-page .league-rule {
+  margin-bottom: 1.5rem;
+}
+
+.decklist-page label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.decklist-page input,
+.decklist-page select,
+.decklist-page textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 0.75rem;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.4rem;
+}
+
+.decklist-page textarea {
+  resize: vertical;
+}
+
+.decklist-page button {
+  font: inherit;
+  font-weight: 700;
+  border: 0;
+  cursor: pointer;
+}
+
+.decklist-page :is(input, select, textarea, button):focus-visible {
+  outline: 3px solid var(--pokemon-blue);
+  outline-offset: 3px;
+}
+
+.decklist-page .deck-errors {
+  color: #a12222;
+  overflow-wrap: anywhere;
+}
+
+.decklist-page .deck-format-info {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--pokemon-blue);
+  border-radius: 0.4rem;
+}
+
+.decklist-page .deck-format-info p:last-child {
+  margin-bottom: 0;
+}
+
 /* Rechtstexte und Footer verwenden die vorhandenen Seitenfarben. */
 .legal-content {
   max-width: 75ch;
