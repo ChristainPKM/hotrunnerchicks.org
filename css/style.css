@@ -612,6 +612,22 @@ th:nth-child(2), td:nth-child(2) {
   overflow-wrap: anywhere;
 }
 
+.decklist-page .deck-id-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.decklist-page .deck-id-row input {
+  flex: 1 1 200px;
+  width: auto;
+}
+
+.decklist-page .deck-id-row a {
+  font-size: 0.875rem;
+}
+
 .decklist-page .deck-format-info {
   margin-top: 1.5rem;
   padding: 1rem 1.25rem;

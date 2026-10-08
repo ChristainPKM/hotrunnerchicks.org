@@ -17,9 +17,19 @@
       <p id="deck-termin"></p>
       <p id="deck-status" role="status"></p>
       <noscript>Bitte JavaScript aktivieren, um den Abgabestatus und das Formular anzuzeigen.</noscript>
-      <form id="deck-form" hidden autocomplete="off">
+      <form id="deck-form" hidden autocomplete="off" novalidate>
         <label for="deck-name">Vor- und Nachname</label>
         <input id="deck-name" type="text" required maxlength="150" autocomplete="off">
+        <label for="deck-geburtsjahr">Geburtsjahr</label>
+        <input id="deck-geburtsjahr" type="text" inputmode="numeric" pattern="[0-9]{4}" required placeholder="1995" aria-describedby="deck-geburtsjahr-fehler">
+        <p id="deck-geburtsjahr-fehler" class="deck-errors" aria-live="polite"></p>
+        <label for="deck-spieler-id">Play! Pokémon-Spieler-ID</label>
+        <div class="deck-id-row">
+          <input id="deck-spieler-id" type="text" inputmode="numeric" pattern="[0-9]+" required aria-describedby="deck-spieler-id-hilfe deck-spieler-id-fehler">
+          <a class="league-event-link" href="https://play.pokemon.com/de-de/resources/documents/player-id-generation-article/" target="_blank" rel="noopener noreferrer">Spieler-ID erstellen</a>
+        </div>
+        <p id="deck-spieler-id-hilfe">Noch keine Spieler-ID? Hier erfährst du, wie du eine erhältst.</p>
+        <p id="deck-spieler-id-fehler" class="deck-errors" aria-live="polite"></p>
         <label for="deck-kategorie">Altersklasse</label>
         <select id="deck-kategorie" required>
           <option value="">Bitte auswählen</option><option>Junior</option><option>Senior</option><option>Master</option>
@@ -49,7 +59,7 @@
     <div class="league-intro-text">
       <p>Du musst die vorbereitete E-Mail selbst an <strong>pkmligacoburg@email.de</strong> versenden. Die Website versendet nichts und kann keinen erfolgreichen Eingang bestätigen. Prüfe vor dem Senden, ob dein E-Mail-Programm die vollständige Deckliste übernommen hat. Bei Problemen mit dem E-Mail-Link kannst du die Nachricht kopieren.</p>
       <p>Maßgeblich für die Frist ist der E-Mail-Eingang, nicht das Öffnen der Nachricht. Die Schließung im Browser richtet sich nach deiner Geräteuhr und ist keine serverseitige Zugangssperre. Alle Zeitangaben gelten für Europe/Berlin, einschließlich Sommer- und Winterzeit.</p>
-      <p>Deine Eingaben werden nur auf dieser Seite im Browser verarbeitet und von der Website weder hochgeladen noch gespeichert oder veröffentlicht. Beim Kopieren gelangen sie in deine Zwischenablage; beim Öffnen der E-Mail in dein E-Mail-Programm. Weitere Hinweise findest du in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+      <p>Deine Eingaben einschließlich Geburtsjahr und Play! Pokémon-Spieler-ID werden nur auf dieser Seite im Browser verarbeitet und von der Website weder hochgeladen noch gespeichert oder veröffentlicht. Ein vollständiges Geburtsdatum wird nicht abgefragt. Beim Kopieren gelangen sie in deine Zwischenablage; beim Öffnen der E-Mail in dein E-Mail-Programm. Weitere Hinweise findest du in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
     </div>
   </main>
   <footer class="site-footer"><nav aria-label="Rechtliche Informationen">

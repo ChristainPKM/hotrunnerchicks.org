@@ -43,8 +43,8 @@ function pruefeDeckliste(text) {
   });
   return {anzahl, fehler, gueltig: anzahl === 60 && fehler.length === 0};
 }
-function erstelleNachricht(config, name, kategorie, deck) {
-  return `Turnier: ${config.name}\nTurnierdatum: ${deutschesDatum(config.datum)}\nSpieler: ${name}\nAltersklasse: ${kategorie}\n\nDeckliste:\n${deck}`;
+function erstelleNachricht(config, name, geburtsjahr, spielerId, kategorie, deck) {
+  return `Turnier: ${config.name}\nTurnierdatum: ${deutschesDatum(config.datum)}\nSpieler: ${name}\nGeburtsjahr: ${geburtsjahr}\nPlay! Pokémon-Spieler-ID: ${spielerId}\nAltersklasse: ${kategorie}\n\nDeckliste:\n${deck}`;
 }
 function erstelleBetreff(config, name) {
   return `Deckliste – ${deutschesDatum(config.datum)} – ${config.name} – ${name}`;
@@ -81,16 +81,40 @@ function zeigePruefung() {
   deckText.setCustomValidity(ergebnis.gueltig ? "" : "Bitte genau 60 Karten eintragen und alle markierten Zeilen korrigieren.");
   return ergebnis;
 }
+// Plausibilitätsprüfung ohne vollständiges Geburtsdatum; IDs bleiben Strings.
+function pruefePersoenlichesFeld(feld) {
+  const jahr = Number(berlinerDatum().slice(0, 4));
+  let fehler = "";
+  if (feld.id === "deck-geburtsjahr") {
+    if (!/^[0-9]{4}$/.test(feld.value) || Number(feld.value) < jahr - 120 || Number(feld.value) > jahr) {
+      fehler = `Bitte ein vierstelliges Geburtsjahr zwischen ${jahr - 120} und ${jahr} eingeben.`;
+    }
+  } else if (!/^[0-9]+$/.test(feld.value)) {
+    fehler = "Bitte deine Play! Pokémon-Spieler-ID ausschließlich mit Ziffern eingeben.";
+  }
+  feld.setCustomValidity(fehler);
+  feld.setAttribute("aria-invalid", String(Boolean(fehler)));
+  document.querySelector(`#${feld.id}-fehler`).textContent = fehler;
+}
+for (const id of ["deck-geburtsjahr", "deck-spieler-id"]) {
+  const feld = document.getElementById(id);
+  feld.addEventListener("input", () => pruefePersoenlichesFeld(feld));
+  feld.addEventListener("blur", () => pruefePersoenlichesFeld(feld));
+}
 function bereiteNachrichtVor() {
   if (!aktualisiereStatus()) return null;
   zeigePruefung();
+  const geburtsjahr = document.querySelector("#deck-geburtsjahr");
+  const spielerId = document.querySelector("#deck-spieler-id");
+  pruefePersoenlichesFeld(geburtsjahr);
+  pruefePersoenlichesFeld(spielerId);
   const nameInput = document.querySelector("#deck-name");
   const name = nameInput.value.trim();
   nameInput.setCustomValidity(name.split(/\s+/).length >= 2 ? "" : "Bitte Vor- und Nachname eingeben.");
   if (!formular.reportValidity()) return null;
   const kategorie = document.querySelector("#deck-kategorie").value;
   if (!["Junior", "Senior", "Master"].includes(kategorie)) return null;
-  const nachricht = erstelleNachricht(decklistenTurnier, name, kategorie, deckText.value);
+  const nachricht = erstelleNachricht(decklistenTurnier, name, geburtsjahr.value, spielerId.value, kategorie, deckText.value);
   document.querySelector("#deck-nachricht").value = `Betreff: ${erstelleBetreff(decklistenTurnier, name)}\n\n${nachricht}`;
   document.querySelector("#deck-nachricht-bereich").hidden = false;
   return {name, nachricht};

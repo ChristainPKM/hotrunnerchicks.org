@@ -6,7 +6,7 @@ Die bestehende Datenschutzerklärung beschreibt bisher die öffentliche Ligawert
 
 ### Freiwillige Decklistenabgabe per E-Mail
 
-Auf unserer Website können Teilnehmer eine E-Mail zur Decklistenabgabe für das angezeigte Pokémon-Turnier vorbereiten. Vor- und Nachname, Altersklasse und Deckliste werden dazu ausschließlich im Browser verarbeitet. Die Website übermittelt diese Eingaben nicht an einen Server und speichert sie weder im GitHub-Repository noch in einem eigenen Browserspeicher. Auf Wunsch wird die Nachricht in die Zwischenablage kopiert oder an das eigene E-Mail-Programm übergeben. Der Versand erfolgt erst durch den Teilnehmer selbst.
+Auf unserer Website können Teilnehmer eine E-Mail zur Decklistenabgabe für das angezeigte Pokémon-Turnier vorbereiten. Vor- und Nachname, Geburtsjahr, Play! Pokémon-Spieler-ID, Altersklasse und Deckliste werden dazu ausschließlich im Browser verarbeitet. Die Website übermittelt diese Eingaben nicht an einen Server und speichert sie weder im GitHub-Repository noch in einem eigenen Browserspeicher. Auf Wunsch wird die Nachricht in die Zwischenablage kopiert oder an das eigene E-Mail-Programm übergeben. Der Versand erfolgt erst durch den Teilnehmer selbst.
 
 Wenn Sie die Nachricht an pkmligacoburg@email.de senden, verarbeiten wir die darin enthaltenen Angaben sowie Ihre Absenderadresse und die beim Empfang anfallenden E-Mail-Daten zur Zuordnung und Prüfung Ihrer Deckliste und zur Organisation des betreffenden Turniers. Diese Daten werden nicht auf der Website veröffentlicht. Beim Versand und Empfang sind die jeweiligen E-Mail-Anbieter beteiligt.
 
