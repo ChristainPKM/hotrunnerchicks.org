@@ -381,5 +381,74 @@ const veranstaltungen = [
         ]
       }
     ]
+  },
+  {
+    "tdfTurnierId": "26-10-033606",
+    "name": "Pokémon-Liga",
+    "datum": "20.10.2026",
+    "wertungen": [
+      {
+        "bezeichnung": "Wertung 2",
+        "ergebnisse": [
+          {
+            "spielerId": "P007",
+            "platz": 1
+          },
+          {
+            "spielerId": "P012",
+            "platz": 2
+          },
+          {
+            "spielerId": "P042",
+            "platz": 3
+          },
+          {
+            "spielerId": "P030",
+            "platz": 4
+          },
+          {
+            "spielerId": "P002",
+            "platz": 5
+          },
+          {
+            "spielerId": "P001",
+            "platz": 6
+          },
+          {
+            "spielerId": "P015",
+            "platz": 7
+          },
+          {
+            "spielerId": "P003",
+            "platz": 8
+          },
+          {
+            "spielerId": "P009",
+            "platz": 9
+          },
+          {
+            "spielerId": "P004",
+            "platz": 10
+          },
+          {
+            "spielerId": "P037",
+            "platz": 11
+          },
+          {
+            "spielerId": "P040",
+            "platz": 12
+          }
+        ]
+      },
+      {
+        "bezeichnung": "Wertung 1",
+        "ergebnisse": [
+          {
+            "spielerId": "P024",
+            "platz": 1
+          }
+        ]
+      }
+    ]
   }
 ];
