@@ -240,6 +240,11 @@ const spielerListe = [
     "id": "P047",
     "name": "Julian Meißner",
     "kategorie": "Master"
+  },
+  {
+    "id": "P048",
+    "name": "Elljot Schindhelm",
+    "kategorie": "Senior"
   }
 ];
 
@@ -523,6 +528,92 @@ const veranstaltungen = [
           {
             "spielerId": "P035",
             "platz": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tdfTurnierId": "26-11-027217",
+    "name": "Pokémon-Liga",
+    "datum": "24.11.2026",
+    "wertungen": [
+      {
+        "bezeichnung": "Wertung 2",
+        "ergebnisse": [
+          {
+            "spielerId": "P042",
+            "platz": 1
+          },
+          {
+            "spielerId": "P003",
+            "platz": 2
+          },
+          {
+            "spielerId": "P012",
+            "platz": 3
+          },
+          {
+            "spielerId": "P001",
+            "platz": 4
+          },
+          {
+            "spielerId": "P002",
+            "platz": 5
+          },
+          {
+            "spielerId": "P041",
+            "platz": 6
+          },
+          {
+            "spielerId": "P009",
+            "platz": 7
+          },
+          {
+            "spielerId": "P007",
+            "platz": 8
+          },
+          {
+            "spielerId": "P030",
+            "platz": 9
+          },
+          {
+            "spielerId": "P004",
+            "platz": 10
+          },
+          {
+            "spielerId": "P015",
+            "platz": 11
+          },
+          {
+            "spielerId": "P040",
+            "platz": 12
+          },
+          {
+            "spielerId": "P037",
+            "platz": 13
+          }
+        ]
+      },
+      {
+        "bezeichnung": "Wertung 1",
+        "ergebnisse": [
+          {
+            "spielerId": "P024",
+            "platz": 1
+          },
+          {
+            "spielerId": "P035",
+            "platz": 2
+          }
+        ]
+      },
+      {
+        "bezeichnung": "Wertung 0",
+        "ergebnisse": [
+          {
+            "spielerId": "P048",
+            "platz": 1
           }
         ]
       }
